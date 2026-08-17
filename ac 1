@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyHub | Master Your Exams</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .research {
+            margin-top: 2.5rem;
+        }
+
+        .research h2 {
+            color: #2980b9;
+            margin-bottom: 0.8rem;
+        }
+
+        .university-cards {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .uni-card {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 250px;
+            text-align: left;
+        }
+
+        .uni-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.4rem;
+        }
+
+        .selection h2 {
+            margin-bottom: 0.3rem;
+            color: #2c3e50;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            margin-top: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        .level-btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .level-btn:hover, .level-btn.active {
+            background-color: #2980b9;
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.5);
+        }
+
+        #honors-btn { background-color: #8e44ad; box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3); }
+        #honors-btn:hover, #honors-btn.active { background-color: #732d91; box-shadow: 0 6px 20px rgba(142, 68, 173, 0.5); }
+        
+        #ap-btn { background-color: #e74c3c; box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3); }
+        #ap-btn:hover, #ap-btn.active { background-color: #c0392b; box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5); }
+
+        /* New Dynamic Subjects Section */
+        #subjects-display {
+            display: none;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        #subjects-display h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .subject-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #495057;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .subject-card:hover {
+            border-color: #3498db;
+            color: #3498db;
+            background: #f1f8ff;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">StudyHub</div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Boost Your Test Scores with Active Recall</h1>
+            <p>Our mission is to help you study smarter, not harder. By actively testing your memory rather than passively re-reading notes, you can lock in knowledge and ace your exams.</p>
+        </section>
+
+        <section class="research">
+            <h2>The Science of Studying</h2>
+            <div class="university-cards">
+                <div class="uni-card">
+                    <h3>Washington University</h3>
+                    <p>Pioneering studies here proved the "Testing Effect," showing that practicing retrieval significantly improves long-term retention compared to re-reading.</p>
+                </div>
+                <div class="uni-card">
+                    <h3>Harvard University</h3>
+                    <p>Cognitive scientists emphasize that retrieving information from memory strengthens neural pathways, making future recall faster under pressure.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="selection">
+            <h2>Select Your Level</h2>
+            <p>Choose your track below to find the right subjects to test yourself on.</p>
+            
+            <div class="button-container">
+                <button class="level-btn" id="regular-btn" data-level="regular">Regular Classes</button>
+                <button class="level-btn" id="honors-btn" data-level="honors">Honors Classes</button>
+                <button class="level-btn" id="ap-btn" data-level="ap">AP Classes</button>
+            </div>
+        </section>
+
+        <section id="subjects-display">
+            <h3 id="selected-level-title">Choose a Subject</h3>
+            <div class="subject-grid" id="subject-grid">
+                </div>
+        </section>
+    </main>
+
+    <script>
+        // Database of subjects based on the class level
+        const subjectDatabase = {
+            regular: [
+                "Algebra 2",
+                "Biology",
+                "English 10",
+                "World History"
+            ],
+            honors: [
+                "Honors Algebra 2",
+                "Honors Chemistry",
+                "Honors English Literature",
+                "Honors US History"
+            ],
+            ap: [
+                "AP Calculus AB",
+                "AP Biology",
+                "AP Psychology",
+                "AP Computer Science"
+            ]
+        };
+
+        const levelButtons = document.querySelectorAll('.level-btn');
+        const subjectsDisplay = document.getElementById('subjects-display');
+        const subjectGrid = document.getElementById('subject-grid');
+        const selectedLevelTitle = document.getElementById('selected-level-title');
+
+        levelButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // 1. Remove active state from all buttons
+                levelButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // 2. Add active state to the clicked button
+                this.classList.add('active');
+
+                // 3. Get the data-level (regular, honors, or ap)
+                const level = this.getAttribute('data-level');
+                const levelName = this.innerText;
+
+                // 4. Update the title
+                selectedLevelTitle.innerText = `${levelName} Subjects`;
+
+                // 5. Clear old subjects
+                subjectGrid.innerHTML = '';
+
+                // 6. Generate new subject cards
+                const subjects = subjectDatabase[level];
+                subjects.forEach(subject => {
+                    const card = document.createElement('div');
+                    card.className = 'subject-card';
+                    card.innerText = subject;
+                    
+                    // Add click event for the future test page
+                    card.addEventListener('click', () => {
+                        alert(`Loading active recall flashcards for: ${subject}...`);
+                    });
+
+                    subjectGrid.appendChild(card);
+                });
+
+                // 7. Reveal the section
+                subjectsDisplay.style.display = 'block';
+                
+                // 8. Re-trigger animation by resetting it
+                subjectsDisplay.style.animation = 'none';
+                subjectsDisplay.offsetHeight; /* trigger reflow */
+                subjectsDisplay.style.animation = null;
+            });
+        });
+    </script>
+</body>
+</html>
